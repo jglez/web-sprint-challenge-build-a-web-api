@@ -18,6 +18,20 @@ router.get('/', (req, res) => {
     })
 })
 
+router.get('/:id', (req, res) => {
+  Project.get(req.params.id)
+    .then(project => {
+      if (!project) {
+        res.status(404).json('Project not found')
+      } else {
+        res.status(200).json(project)
+      }
+    })
+    .catch(err => {
+      res.status(500).json(err)
+    })
+})
+
 router.post('/', (req, res) => {
   Project.insert(req.body)
     .then(() => {
