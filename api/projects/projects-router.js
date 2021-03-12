@@ -18,5 +18,19 @@ router.get('/', (req, res) => {
     })
 })
 
+router.post('/', (req, res) => {
+  Project.insert(req.body)
+    .then(() => {
+      if (!req.body) {
+        res.status(400).json('Invalid Request')
+      } else {
+        res.status(200).json(req.body)
+      }
+    })
+    .catch(err => {
+      res.status(400).json(err)
+    })
+})
+
 
 module.exports = router
