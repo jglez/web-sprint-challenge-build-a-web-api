@@ -46,4 +46,13 @@ router.post('/', (req, res) => {
     })
 })
 
+// router.put()
+
+// router.delete('/:id', (req, res) => {
+//   Action.remove(req.params.id)
+//     .then(test => {
+//       res.status(200).json(test)
+//     })
+// })
+
 module.exports = router
