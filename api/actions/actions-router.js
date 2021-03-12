@@ -11,7 +11,13 @@ const router = express.Router()
 
 /***** ACTIONS ENDPOINTS *****/
 router.get('/', (req, res) => {
-  res.status(200).json('Hello from the ether')
+  Action.get()
+    .then(actions => {
+      res.status(200).json(actions)
+    })
+    .catch(err => {
+      res.status(500).json(err)
+    })
 })
 
 module.exports = router
