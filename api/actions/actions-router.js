@@ -25,7 +25,12 @@ router.get('/:id', (req, res) => {
 
   Action.get(id)
     .then(action => {
-      res.status(200).json(action)
+
+      if (action === null) {
+        res.status(404).json('Action not found on server')
+      } else {
+        res.status(200).json(action)
+      }
     })
     .catch(err => {
       res.status(500).json(err)
