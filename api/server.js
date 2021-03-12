@@ -11,6 +11,6 @@ const server = express();
 server.use(express.json())
 
 // Funnel Actions requests to Actions Router
-server.use('/api/actions', actionsRouter)
+server.use('*', actionsRouter)
 
 module.exports = server;

@@ -10,5 +10,8 @@ const Action = require('./actions-model.js')
 const router = express.Router()
 
 /***** ACTIONS ENDPOINTS *****/
+router.get('/', (req, res) => {
+  res.status(200).json('Hello from the ether')
+})
 
 module.exports = router
