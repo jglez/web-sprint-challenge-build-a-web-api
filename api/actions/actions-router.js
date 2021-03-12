@@ -25,7 +25,6 @@ router.get('/:id', (req, res) => {
 
   Action.get(id)
     .then(action => {
-
       if (action === null) {
         res.status(404).json('Action not found on server')
       } else {
@@ -34,6 +33,16 @@ router.get('/:id', (req, res) => {
     })
     .catch(err => {
       res.status(500).json(err)
+    })
+})
+
+router.post('/', (req, res) => {
+  Action.insert(req.body)
+    .then(() => {
+      res.status(200).json(req.body)
+    })
+    .catch(err => {
+      res.status(400).json(err)
     })
 })
 
