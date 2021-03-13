@@ -32,6 +32,16 @@ router.get('/:id', (req, res) => {
     })
 })
 
+router.get('/:id/actions', (req, res) => {
+  Project.getProjectActions(req.params.id)
+    .then(projectActions => {
+      res.status(200).json(projectActions)
+    })
+    .catch(() => {
+      res.status(500).json([])
+    })
+})
+
 router.post('/', (req, res) => {
   Project.insert(req.body)
     .then(() => {
