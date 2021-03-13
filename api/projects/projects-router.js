@@ -69,5 +69,15 @@ router.put('/:id', async (req, res) => {
   }
 })
 
+router.delete('/:id', (req, res) => {
+  Project.remove(req.params.id)
+    .then(() => {
+      res.status(200).json('Project deleted')
+    })
+    .catch(() => {
+      res.status(404).json('No such project with id')
+    })
+})
+
 
 module.exports = router
