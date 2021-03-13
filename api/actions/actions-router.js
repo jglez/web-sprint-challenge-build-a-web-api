@@ -46,7 +46,18 @@ router.post('/', (req, res) => {
     })
 })
 
-// router.put()
+router.put('/:id', async (req, res) => {
+  const id = req.params.id
+  const changes = req.body
+
+  try {
+    const updatedAction = await Action.update(id, changes)
+    res.status(201).json(updatedAction)
+
+  } catch (err) {
+    res.status(400)
+  }
+})
 
 // router.delete('/:id', (req, res) => {
 //   Action.remove(req.params.id)
