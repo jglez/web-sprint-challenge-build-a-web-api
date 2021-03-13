@@ -56,5 +56,18 @@ router.post('/', (req, res) => {
     })
 })
 
+router.put('/:id', async (req, res) => {
+  const id = req.params.id
+  const changes = req.body
+
+  try {
+    const updatedProject = await Project.update(id, changes)
+    res.status(21).json(updatedProject)
+
+  } catch (err) {
+    res.status(400)
+  }
+})
+
 
 module.exports = router
